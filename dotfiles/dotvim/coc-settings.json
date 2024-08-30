@@ -1,0 +1,22 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["python", "javascript", "go", "yaml", "rust" ],
+  "python.formatting.autopep8Path": "/usr/local/bin/autopep8",
+  "go.goplsOptions.verboseOutput" : true,
+  "diagnostic.messageTarget" : "float",
+  "diagnostic.virtualText" : false,
+  "yaml.schemas": {
+        "kubernetes": ["/*.yaml"]
+  },
+  "clangd.path": "/home/crash/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "clangd.arguments": ["--log=verbose", "--background-index", "--clang-tidy"],
+  "clangd.enabled": false,
+  "eslint.nodePath": ".yarn/sdks",
+  "workspace.workspaceFolderCheckCwd": false,
+  "rust-analyzer.inlayHints.enable": false,
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.renderColons": false,
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+  "rust-analyzer.enable": true,
+}
