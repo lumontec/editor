@@ -2,7 +2,7 @@
 
 vim_install_path="$HOME/.local"
 nvm_version="v0.40.1"
-node_version="v18.20.4"
+node_version="v16.20.2"
 
 echo "install nvm"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$nvm_version/install.sh | bash
