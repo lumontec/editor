@@ -28,8 +28,8 @@ vim_runtime="$vim_install_path/share/vim/vim91"
 if ! grep -q "export VIM=$vim_bin" ~/.bashrc; then
     echo "export VIM=$vim_bin" >> ~/.bashrc
 fi
-if ! grep -q "export VIMRUNTIME=$vim_runtime" ~/.bashrc; then
-    echo "export VIMRUNTIME=$vim_runtime" >> ~/.bashrc
+if ! grep -q "alias vim='VIMRUNTIME=$vim_runtime vim'" ~/.bashrc; then
+    echo "alias vim='VIMRUNTIME=$vim_runtime vim'" >> ~/.bashrc
 fi
 
 if ! grep -q "export PATH=$vim_bin:\$PATH" ~/.bashrc; then
