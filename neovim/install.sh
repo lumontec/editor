@@ -3,15 +3,14 @@
 nvim_install_path="$HOME/.local"
 
 echo "install vim under $nvim_install_path"
-cp -r ./nvim-linux64/bin/* $nvim_install_path/bin
-cp -r ./nvim-linux64/lib/* $nvim_install_path/lib
-cp -r ./nvim-linux64/man/* $nvim_install_path/man
-cp -r ./nvim-linux64/share/* $nvim_install_path/share
+cp -r ./nvim-linux-x86_64/bin/* $nvim_install_path/bin
+cp -r ./nvim-linux-x86_64/lib/* $nvim_install_path/lib
+cp -r ./nvim-linux-x86_64/share/* $nvim_install_path/share
 
 echo -e "VIM environment variables have been set:\nVIM: $nvim_install_path/bin\nPATH: $nvim_install_path/bin\nVIMRUNTIME: $nvim_install_path/share/vim"
 
 nvim_bin="$nvim_install_path/bin"
-nvim_runtime="$nvim_install_path/share/vim/vim91"
+nvim_runtime="$nvim_install_path/share/nvim/runtime"
 
 if ! grep -q "export VIM=$nvim_bin" ~/.bashrc; then
     echo "export VIM=$nvim_bin" >> ~/.bashrc
