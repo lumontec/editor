@@ -1,4 +1,5 @@
--- nord light theme
+-- File: lua/plugins/nord-light.lua
+
 return {
   'lumontec/nord-vim-light', -- The Nord Light theme plugin
   version = '*',
@@ -8,7 +9,7 @@ return {
   end,
 }
 
--- nord dark theme
+---- File: lua/plugins/nord-light.lua
 --
 --return {
 --  'shaunsingh/nord.nvim', -- The Nord Light theme plugin
