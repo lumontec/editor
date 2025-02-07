@@ -20,6 +20,7 @@ if ! grep -q "export PATH=$nvim_bin:\$PATH" ~/.bashrc; then
 fi
 
 echo "copying over initialization files"
+rm -rf $HOME/.config.nvim
 cp -rf ./kickstart.nvim $HOME/.config/nvim
 
 source ~/.bashrc
