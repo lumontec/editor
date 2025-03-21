@@ -1,5 +1,3 @@
--- Set <space> as the leader key
--- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -71,9 +69,22 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- Folding
-vim.opt.foldmethod = 'indent'
-vim.opt.foldenable = true
-vim.opt.foldlevel = 99
+--
+
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldmethod = 'expr'
+vim.opt.foldenable = false
+vim.o.foldtext = 'v:lua.MyFoldText()'
+
+function _G.MyFoldText()
+  local line = vim.fn.getline(vim.v.foldstart) -- Get first line of fold
+  local line_count = vim.v.foldend - vim.v.foldstart + 1 -- Number of folded lines
+
+  return '[+] ' .. line .. '  -- lines ' .. line_count -- Append line count after comment
+end
+
+-- Remove noisy dots after folds
+vim.opt.fillchars = { fold = ' ' }
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -541,7 +552,7 @@ require('lazy').setup({
           settings = {
             python = {
               analysis = {
-                typeCheckingMode = 'off', -- Set to "basic" or "strict" as needed
+                typeCheckingMode = 'basic', -- Set to "basic" or "strict" as needed
               },
             },
           },
