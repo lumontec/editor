@@ -365,6 +365,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Shortcut for searching the current word under cursor 
+      vim.keymap.set('n', '<C-s>', function()
+        require('telescope.builtin').grep_string()
+      end, { desc = 'Search for word under cursor' })
     end,
   },
 
@@ -546,7 +551,9 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          filetypes = { "c", "h", "cpp", "objc", "objcpp", "cuda", "C", "H" }
+        },
         gopls = {},
         pyright = {
           settings = {
