@@ -36,7 +36,7 @@ call plug#end()
 
 " -- COC EXTENSIONS
 "
-let g:coc_global_extensions = ['coc-pyright', 'coc-yaml', 'coc-go', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-pyright', 'coc-yaml', 'coc-go', 'coc-tsserver', 'coc-clangd']
 
 
 " -- CONFIGURATIONS 
@@ -45,9 +45,8 @@ let g:coc_global_extensions = ['coc-pyright', 'coc-yaml', 'coc-go', 'coc-tsserve
 set number
 
 " set folding 
-"set foldmethod=syntax "syntax highlighting items specify folds
 set foldmethod=indent "syntax highlighting items specify folds
-set foldlevelstart=99 "start file with all folds opened
+"set foldlevelstart=99 "start file with all folds opened
 
 " save content to system clipboard
 set clipboard=unnamed
@@ -73,6 +72,7 @@ set nobackup
 
 " c, cpp autoformat
 autocmd FileType c,cpp setlocal equalprg=clang-format
+autocmd BufRead,BufNewFile *.C,*.H setfiletype cpp
 
 " disable cocnvim startup warning
 let g:coc_disable_startup_warning = 1
@@ -159,7 +159,7 @@ function SearchWord()
     let l:Command = expand("<cword>")
        execute "Rg!" . l:Command
 endfunction
-nnoremap <C-w> :call SearchWord()<CR>
+nnoremap <C-s> :call SearchWord()<CR>
 
 "
 " toggle coc
