@@ -366,7 +366,7 @@ require('lazy').setup({
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
 
-      -- Shortcut for searching the current word under cursor 
+      -- Shortcut for searching the current word under cursor
       vim.keymap.set('n', '<C-s>', function()
         require('telescope.builtin').grep_string()
       end, { desc = 'Search for word under cursor' })
@@ -552,7 +552,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
-          filetypes = { "c", "h", "cpp", "objc", "objcpp", "cuda", "C", "H" }
+          filetypes = { 'c', 'h', 'cpp', 'objc', 'objcpp', 'cuda', 'C', 'H' },
         },
         gopls = {},
         pyright = {
@@ -914,6 +914,20 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+})
+
+-- Reopen the last document opened in nvim when nvim run with no args
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    if vim.fn.argc() == 0 then
+      local lastfile = vim.v.oldfiles[1]
+      if lastfile and vim.fn.filereadable(lastfile) == 1 then
+        vim.cmd('edit ' .. vim.fn.fnameescape(lastfile))
+        vim.cmd 'filetype detect' -- Ensure filetype is set
+        vim.cmd 'doautocmd BufRead' -- Trigger syntax and other BufRead events
+      end
+    end
+  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
