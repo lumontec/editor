@@ -313,12 +313,17 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          results_show_immediately = true,  -- Show results as they come in
+          debounce_timer = 10,             -- Lower value = more frequent updates
+          disable_coordinates = true,       -- Optional: might improve performance
+          sorting_strategy = "ascending",   -- Show new results at the top
+          generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
+          -- mappings = {
+          --   i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+          -- },
+        },
+        -- pickers = {},
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
