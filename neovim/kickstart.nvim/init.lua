@@ -119,6 +119,18 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Shows a vertical split diff of the current file against HEAD
+-- Uses a terminal buffer to display the git show output
+-- Useful for quickly seeing what changes you've made to the current file
+vim.keymap.set('n', '<C-p>', function()
+    local git_root = vim.fn.system('git rev-parse --show-toplevel'):gsub('\n', '')
+    local current_file = vim.fn.expand('%:p')
+    local relative_path = current_file:gsub(git_root .. '/', '')
+    local cmd = string.format('vert diffsplit term://git --no-pager show HEAD:%s', vim.fn.fnameescape(relative_path))
+    vim.cmd(cmd)
+end, { desc = 'Show git diff for current file' })
+
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
