@@ -569,7 +569,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {
-          filetypes = { 'c', 'h', 'cpp', 'objc', 'objcpp', 'cuda', 'C', 'H' },
+          filetypes = { 'c', 'h', 'cpp', 'hpp', 'cu', 'cuh', 'objc', 'objcpp', 'cuda', 'C', 'H' },
         },
         gopls = {},
         pyright = {
@@ -606,6 +606,7 @@ require('lazy').setup({
             },
           },
         },
+
       }
 
       -- Ensure the servers and tools above are installed
@@ -906,6 +907,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   { import = 'custom.plugins' },
+
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
@@ -946,6 +948,8 @@ vim.api.nvim_create_autocmd('VimEnter', {
     end
   end,
 })
+
+require 'custom.cpp_switch'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
