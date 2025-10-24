@@ -5,10 +5,10 @@ local function switch_source_header()
   local ext = vim.fn.expand('%:e')
 
   local candidates = {}
-  if ext == 'c' or ext == 'C' or ext == 'cc' or ext == 'cpp' then
-    candidates = { basename .. '.h', basename .. '.H', basename .. '.hpp', basename .. '.hh' }
-  elseif ext == 'h' or ext == 'H' or ext == 'hpp' or ext == 'hh' then
-    candidates = { basename .. '.c', basename .. '.C', basename .. '.cc', basename .. '.cpp' }
+  if ext == 'c' or ext == 'C' or ext == 'cu' or ext == 'cc' or ext == 'cpp' then
+    candidates = { basename .. '.h', basename .. '.H', basename .. '.hpp', basename .. '.hh', basename .. '.cuh' }
+  elseif ext == 'h' or ext == 'H' or ext == 'hpp' or ext == 'hh' or ext == 'cuh' then
+    candidates = { basename .. '.c', basename .. '.C', basename .. '.cc', basename .. '.cpp', basename .. '.cu' }
   else
     vim.notify('Not a C/C++ source or header file', vim.log.levels.WARN)
     return
